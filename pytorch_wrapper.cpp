@@ -9,8 +9,8 @@ torch::Tensor custom_matmul_cpp(const torch::Tensor& a, const torch::Tensor& b) 
     // Check if the inner dimensions match
     TORCH_CHECK(a.size(1) == b.size(0), "Inner dimensions of 'a' and 'b' must match");
 
-    auto a_cpu = a.contiguous().to(torch::kCPU);
-    auto b_cpu = b.contiguous().to(torch::kCPU);
+    auto a_cpu = a.contiguous().to(torch::kCPU); // note, doesnt always work without contiguous, also moving to target device, target based on the matmul code
+    auto b_cpu = b.contiguous().to(torch::kCPU); // note, doesnt always work without contiguous, also moving to target device, target based on the matmul code
 
     float *a_ptr = a_cpu.data_ptr<float>();
     float *b_ptr = b_cpu.data_ptr<float>();
