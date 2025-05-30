@@ -16,5 +16,5 @@ def custom_forward(self, input=None, bias=None):
 
 torch.nn.Linear.forward = custom_forward
 set_seed(42)
-generator = pipeline('text-generation', model='/Users/ashwinrohit/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e', device="mps")
+generator = pipeline('text-generation', model='gpt2', device="mps")
 print(generator("Hello, I'm a language model,", max_new_tokens=20))
